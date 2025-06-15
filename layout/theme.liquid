@@ -31,7 +31,7 @@
     {% sections 'footer-group' %}
 
     <!-- Pro License Logic (Supportefy) -->
-    {{ 'pro-license.js' | asset_url | script_tag }}
+    <script src="{{ 'pro-license.js' | asset_url }}" defer></script>
 
     <!-- WhatsApp Integration -->
     {% render 'whatsapp' %}
