@@ -1,0 +1,48 @@
+{% assign collection = section.settings.collection %}
+{% if collection == blank %}
+  <p>No collection selected.</p>
+{% else %}
+  <div class="product-grid" dir="rtl">
+    {% assign products = collection.products %}
+    {% if section.settings.vendor != blank %}
+      {% assign products = products | where: 'vendor', section.settings.vendor %}
+    {% endif %}
+    {% for product in products limit: section.settings.limit %}
+      <div class="product-grid__item">
+        {% if product.featured_image %}
+          {% render 'image', image: product.featured_image, url: product.url, width: 400 %}
+        {% endif %}
+        <p>{{ product.title }}</p>
+        {% if section.settings.show_price %}
+          <p>{{ product.price | money }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .product-grid__item {
+    text-align: center;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "text", "id": "vendor", "label": "Vendor filter" },
+    { "type": "checkbox", "id": "show_price", "label": "Show price", "default": true },
+    { "type": "range", "id": "limit", "label": "Products to show", "min": 1, "max": 50, "step": 1, "default": 8 }
+  ],
+  "presets": [
+    { "name": "Product Grid" }
+  ]
+}
+{% endschema %}
