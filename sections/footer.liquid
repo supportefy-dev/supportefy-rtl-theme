@@ -1,4 +1,4 @@
-<footer>
+<footer style="padding-top: {{ section.settings.top_padding }}px; padding-bottom: {{ section.settings.bottom_padding }}px;">
   <div class="footer__copyright">
     &copy;
     {{ 'now' | date: '%Y' }}
@@ -66,6 +66,26 @@
 {
   "name": "t:general.footer",
   "settings": [
+    {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
     {
       "type": "link_list",
       "id": "menu",

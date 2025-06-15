@@ -24,7 +24,7 @@
     <script src="{{ 'register-sw.js' | asset_url }}" defer></script>
   </head>
 
-  <body>
+  <body dir="{{ settings.text_direction }}">
     {% sections 'header-group' %}
 
     {{ content_for_layout }}
