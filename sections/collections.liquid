@@ -4,6 +4,7 @@
 
   https://shopify.dev/docs/storefronts/themes/architecture/templates/collection
 {% endcomment %}
+<div style="padding-top: {{ section.settings.top_padding }}px; padding-bottom: {{ section.settings.bottom_padding }}px;">
 
 <h1>{{ 'collections.title' | t }}</h1>
 
@@ -53,10 +54,31 @@
   }
 {% endstylesheet %}
 
+</div>
 {% schema %}
 {
   "name": "t:general.collections_grid",
   "settings": [
+    {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
     {
       "type": "select",
       "id": "grid_item_width",

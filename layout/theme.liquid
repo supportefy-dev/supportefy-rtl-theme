@@ -13,7 +13,7 @@
     {{ content_for_header }}
   </head>
 
-  <body>
+  <body dir="{{ settings.text_direction }}">
     {% sections 'header-group' %}
 
     {{ content_for_layout }}

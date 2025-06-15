@@ -51,6 +51,16 @@
         "label": "t:labels.page_margin",
         "default": 20
       }
+      ,{
+        "type": "select",
+        "id": "text_direction",
+        "label": "Text Direction",
+        "options": [
+          { "value": "rtl", "label": "RTL - Arabic" },
+          { "value": "ltr", "label": "LTR - English" }
+        ],
+        "default": "rtl"
+      }
     ]
   },
   {
