@@ -5,6 +5,10 @@
 
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
 
+    <!-- Preload Fonts for SEO/Performance -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/notosansarabic/v28/bMrm7ri0WZsUyYDfk4rfPJO3LUTMZKc.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/notonaskharabic/v14/QldKNThW5Xtbjqeq9bgXfFqnX9fXpxWdVpo.woff2" as="font" type="font/woff2" crossorigin>
+
     {% render 'meta-tags' %}
 
     {{ content_for_header }}
@@ -30,11 +34,4 @@
     <!-- WhatsApp Integration -->
     {% render 'whatsapp' %}
 
-    <!-- Add to Home Screen Popup -->
-    <div id="add-to-home-popup">
-      <button type="button" class="close">&times;</button>
-      <button type="button" id="install-pwa">Add to Home</button>
-    </div>
-    <script src="{{ 'add-to-home-popup.js' | asset_url }}" defer></script>
-  </body>
-</html>
+    <!-- Add to Home S
