@@ -19,7 +19,7 @@
         "id": "type_primary_font",
         "default": "work_sans_n4",
         "label": "t:general.primary"
-      },
+      }
     ]
   },
   {
@@ -87,6 +87,57 @@
         "unit": "px",
         "label": "t:labels.input_corner_radius",
         "default": 4
+      }
+    ]
+  },
+  {
+    "name": "WhatsApp",
+    "settings": [
+      {
+        "type": "text",
+        "id": "whatsapp_number",
+        "label": "WhatsApp number"
+      },
+      {
+        "type": "text",
+        "id": "whatsapp_message",
+        "label": "WhatsApp default message"
+      }
+    ]
+  },
+  {
+    "name": "Theme variant",
+    "settings": [
+      {
+        "type": "radio",
+        "id": "theme_variant",
+        "label": "Theme variant",
+        "options": [
+          {
+            "value": "light",
+            "label": "Light"
+          },
+          {
+            "value": "dark",
+            "label": "Dark"
+          }
+        ],
+        "default": "light"
+      }
+    ]
+  },
+  {
+    "name": "PWA",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "pwa_icon_192",
+        "label": "PWA icon 192x192"
+      },
+      {
+        "type": "image_picker",
+        "id": "pwa_icon_512",
+        "label": "PWA icon 512x512"
       }
     ]
   }

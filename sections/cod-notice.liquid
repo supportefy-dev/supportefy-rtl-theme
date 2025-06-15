@@ -1,0 +1,25 @@
+<div class="cod-notice" dir="rtl">
+  <p>{{ section.settings.text }}</p>
+</div>
+
+{% stylesheet %}
+  .cod-notice {
+    background-color: #e8f5e9;
+    padding: 1rem;
+    border: 1px solid #a5d6a7;
+    border-radius: 4px;
+    text-align: center;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "COD Notice",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Notice text", "default": "الدفع عند الاستلام متاح لجميع الطلبات" }
+  ],
+  "presets": [
+    { "name": "COD Notice" }
+  ]
+}
+{% endschema %}

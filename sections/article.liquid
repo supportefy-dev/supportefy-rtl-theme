@@ -8,7 +8,7 @@
 <div style="padding-top: {{ section.settings.top_padding }}px; padding-bottom: {{ section.settings.bottom_padding }}px;">
 
 {% if article.image %}
-  {{ article.image | image_url: width: 1000 | image_tag }}
+  {{ article.image | image_url: width: 1000 | image_tag: alt: article.title, loading: 'lazy' }}
 {% endif %}
 
 <h1>{{ article.title }}</h1>

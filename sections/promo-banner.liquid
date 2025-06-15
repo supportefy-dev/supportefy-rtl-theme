@@ -1,0 +1,57 @@
+<div class="promo-banner" dir="rtl">
+  <p class="promo-banner__text">{{ section.settings.text }}</p>
+  <div class="promo-banner__countdown" data-end-date="{{ section.settings.end_date }}"></div>
+</div>
+
+{% stylesheet %}
+  .promo-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #faf6e8;
+    animation: fadeIn 1s ease-in-out;
+  }
+  .promo-banner__countdown {
+    font-weight: bold;
+    min-width: 5rem;
+    text-align: center;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  const banner = document.currentScript.parentElement;
+  const countdownEl = banner.querySelector('.promo-banner__countdown');
+  const end = new Date(countdownEl.dataset.endDate);
+  function update() {
+    const diff = end - new Date();
+    if (diff <= 0) {
+      countdownEl.textContent = '0:00:00';
+      clearInterval(timer);
+      return;
+    }
+    const hrs = String(Math.floor(diff / 3600000)).padStart(2, '0');
+    const mins = String(Math.floor(diff % 3600000 / 60000)).padStart(2, '0');
+    const secs = String(Math.floor(diff % 60000 / 1000)).padStart(2, '0');
+    countdownEl.textContent = `${hrs}:${mins}:${secs}`;
+  }
+  const timer = setInterval(update, 1000);
+  update();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Promo Banner",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Banner text", "default": "Limited time offer!" },
+    { "type": "text", "id": "end_date", "label": "End date (YYYY-MM-DDTHH:MM:SSZ)", "default": "2024-12-31T23:59:59Z" }
+  ],
+  "presets": [
+    { "name": "Promo Banner" }
+  ]
+}
+{% endschema %}
