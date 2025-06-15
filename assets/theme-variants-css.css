@@ -1,0 +1,10 @@
+/* Theme variant definitions */
+:root.theme-variant-light {
+  --color-background: #ffffff;
+  --color-foreground: #333333;
+}
+
+:root.theme-variant-dark {
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+}

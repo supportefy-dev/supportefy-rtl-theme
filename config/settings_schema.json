@@ -79,5 +79,26 @@
         "default": 4
       }
     ]
+  },
+  {
+    "name": "Theme variant",
+    "settings": [
+      {
+        "type": "radio",
+        "id": "theme_variant",
+        "label": "Theme variant",
+        "options": [
+          {
+            "value": "light",
+            "label": "Light"
+          },
+          {
+            "value": "dark",
+            "label": "Dark"
+          }
+        ],
+        "default": "light"
+      }
+    ]
   }
 ]
