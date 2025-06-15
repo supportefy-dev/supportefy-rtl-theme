@@ -1,6 +1,12 @@
 <header style="padding-top: {{ section.settings.top_padding }}px; padding-bottom: {{ section.settings.bottom_padding }}px;">
   <h2 class="header__title">
-    {{ shop.name | link_to: routes.root_url }}
+    <a href="{{ routes.root_url }}">
+      {% if settings.logo %}
+        {{ settings.logo | image_url: width: 200 | image_tag: alt: shop.name }}
+      {% else %}
+        {{ shop.name }}
+      {% endif %}
+    </a>
   </h2>
 
   <div class="header__menu">
@@ -80,6 +86,11 @@
       "step": 4,
       "unit": "px",
       "default": 0
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
     },
     {
       "type": "link_list",

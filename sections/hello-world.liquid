@@ -9,7 +9,7 @@
       <h1>Hello, World!</h1>
 
       <p class="welcome-description">
-        The Skeleton theme is a minimal, carefully structured Shopify theme designed to help you quickly get started.
+        The <THEME_NAME> is a minimal, carefully structured Shopify theme designed to help you quickly get started.
         Designed with modularity, maintainability, and Shopify's best practices in mind.
       </p>
 
@@ -19,7 +19,11 @@
       </p>
     </div>
     <div class="icon">
-      <img src="{{ 'shoppy-x-ray.svg' | asset_url }}" width="300" height="300" loading="lazy">
+      {% if section.settings.illustration %}
+        {{ section.settings.illustration | image_url: width: 300 | image_tag: alt: 'Illustration', loading: 'lazy' }}
+      {% else %}
+        <img src="{{ 'shoppy-x-ray.svg' | asset_url }}" width="300" height="300" loading="lazy">
+      {% endif %}
     </div>
   </div>
 </div>
@@ -145,6 +149,11 @@
       "step": 4,
       "unit": "px",
       "default": 0
+    },
+    {
+      "type": "image_picker",
+      "id": "illustration",
+      "label": "Illustration"
     },
     {
       "type": "range",

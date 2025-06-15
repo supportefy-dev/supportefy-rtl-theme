@@ -24,16 +24,28 @@
 
   <div class="footer__trust">
     <div class="trust-item">
-      <img src="{{ 'icon-shipping.svg' | asset_url }}" alt="Free shipping">
-      <span>Free shipping</span>
+      {% if section.settings.shipping_icon %}
+        {{ section.settings.shipping_icon | image_url: width: 20 | image_tag: alt: section.settings.shipping_text }}
+      {% else %}
+        <img src="{{ 'icon-shipping.svg' | asset_url }}" alt="{{ section.settings.shipping_text }}">
+      {% endif %}
+      <span>{{ section.settings.shipping_text }}</span>
     </div>
     <div class="trust-item">
-      <img src="{{ 'icon-cod.svg' | asset_url }}" alt="Cash on delivery">
-      <span>COD available</span>
+      {% if section.settings.cod_icon %}
+        {{ section.settings.cod_icon | image_url: width: 20 | image_tag: alt: section.settings.cod_text }}
+      {% else %}
+        <img src="{{ 'icon-cod.svg' | asset_url }}" alt="{{ section.settings.cod_text }}">
+      {% endif %}
+      <span>{{ section.settings.cod_text }}</span>
     </div>
     <div class="trust-item">
-      <img src="{{ 'icon-returns.svg' | asset_url }}" alt="Easy returns">
-      <span>Easy returns</span>
+      {% if section.settings.returns_icon %}
+        {{ section.settings.returns_icon | image_url: width: 20 | image_tag: alt: section.settings.returns_text }}
+      {% else %}
+        <img src="{{ 'icon-returns.svg' | asset_url }}" alt="{{ section.settings.returns_text }}">
+      {% endif %}
+      <span>{{ section.settings.returns_text }}</span>
     </div>
   </div>
 </footer>
@@ -112,69 +124,13 @@
       "id": "show_payment_icons",
       "label": "t:labels.show_payment_icons",
       "default": true
-    }
-  ]
-}
-{% endschema %}
-
-  }
-  footer a {
-    text-decoration: none;
-    color: var(--color-foreground);
-  }
-  footer .footer__links,
-  footer .footer__payment,
-  footer .footer__locale {
-    display: flex;
-    gap: 1rem;
-  }
-  footer .footer__trust {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  footer .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
-{% endstylesheet %}
-
-{% schema %}
-{
-  "name": "t:general.footer",
-  "settings": [
-    {
-      "type": "range",
-      "id": "top_padding",
-      "label": "Top padding",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "default": 0
     },
-    {
-      "type": "range",
-      "id": "bottom_padding",
-      "label": "Bottom padding",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "t:labels.show_payment_icons",
-      "default": true
-    }
+    { "type": "image_picker", "id": "shipping_icon", "label": "Shipping icon" },
+    { "type": "text", "id": "shipping_text", "label": "Shipping text", "default": "Free shipping" },
+    { "type": "image_picker", "id": "cod_icon", "label": "COD icon" },
+    { "type": "text", "id": "cod_text", "label": "COD text", "default": "COD available" },
+    { "type": "image_picker", "id": "returns_icon", "label": "Returns icon" },
+    { "type": "text", "id": "returns_text", "label": "Returns text", "default": "Easy returns" }
   ]
 }
 {% endschema %}
