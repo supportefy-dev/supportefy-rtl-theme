@@ -1,4 +1,4 @@
-# Contributing to Skeleton Theme
+# Contributing to <THEME_NAME>
 
 ## How to contribute
 
@@ -17,7 +17,7 @@ For your contribution to be accepted, you'll need to sign the [Shopify Contribut
 
 ## Steps to contribute
 
-1. Fork the repository: [https://github.com/Shopify/skeleton-theme/fork](https://github.com/Shopify/skeleton-theme/fork)
+1. Fork the repository: [<REPOSITORY_FORK_URL>](<REPOSITORY_FORK_URL>)
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to your branch: `git push origin my-new-feature`

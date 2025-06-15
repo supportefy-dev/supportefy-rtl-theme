@@ -1,7 +1,7 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Skeleton",
+    "theme_name": "<THEME_NAME>",
     "theme_version": "0.1.0",
     "theme_author": "Shopify",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
@@ -118,6 +118,13 @@
         "id": "whatsapp_message",
         "label": "WhatsApp default message"
       }
+    ]
+  },
+  {
+    "name": "Branding",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo" },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
     ]
   },
   {
