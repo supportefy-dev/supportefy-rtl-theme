@@ -1,0 +1,94 @@
+<div class="ramadan-flash-kit">
+  <h2>{{ section.settings.heading }}</h2>
+  <div class="ramadan-timer" id="ramadan-timer-{{ section.id }}"></div>
+  <div class="ramadan-bundles">
+    {% for block in section.blocks %}
+      <div class="bundle">
+        {% if block.settings.product != blank %}
+          {{ block.settings.product | link_to: block.settings.product.url }}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% javascript %}
+  (function() {
+    var endDate = new Date("{{ section.settings.end_date }}").getTime();
+    var timerEl = document.getElementById('ramadan-timer-{{ section.id }}');
+    if (!timerEl) return;
+    function updateTimer() {
+      var now = Date.now();
+      var diff = endDate - now;
+      if (diff <= 0) {
+        timerEl.textContent = 'Offer ended';
+        clearInterval(interval);
+        return;
+      }
+      var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      var h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      var m = Math.floor((diff / (1000 * 60)) % 60);
+      var s = Math.floor((diff / 1000) % 60);
+      timerEl.textContent = d + 'd ' + h + 'h ' + m + 'm ' + s + 's';
+    }
+    updateTimer();
+    var interval = setInterval(updateTimer, 1000);
+  })();
+{% endjavascript %}
+
+{% stylesheet %}
+  .ramadan-flash-kit {
+    padding: 1rem;
+    background-color: #fff7e6;
+    text-align: center;
+  }
+  .ramadan-bundles {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  .bundle {
+    border: 1px solid #e1e3e5;
+    padding: 0.5rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Ramadan Flash Kit",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ramadan Offer"
+    },
+    {
+      "type": "text",
+      "id": "end_date",
+      "label": "Countdown end date",
+      "default": "2024-04-10T00:00:00Z"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Bundle Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ramadan Flash Kit"
+    }
+  ]
+}
+{% endschema %}
