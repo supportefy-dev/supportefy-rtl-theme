@@ -1,31 +1,26 @@
-let deferredPrompt;
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
+document.addEventListener("DOMContentLoaded", () => {
   const popup = document.getElementById('add-to-home-popup');
-  if (popup) popup.style.display = 'block';
-});
+  const installButton = document.getElementById('install-pwa');
+  const closeButton = popup.querySelector('.close');
 
-function hidePopup() {
-  const popup = document.getElementById('add-to-home-popup');
-  if (popup) popup.style.display = 'none';
-}
+  let deferredPrompt;
 
-function installPWA() {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.finally(() => {
-      deferredPrompt = null;
-      hidePopup();
-    });
-  }
-}
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    popup.style.display = 'block';
+  });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const closeBtn = document.querySelector('#add-to-home-popup .close');
-  if (closeBtn) closeBtn.addEventListener('click', hidePopup);
+  installButton.addEventListener('click', () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.finally(() => {
+        popup.style.display = 'none';
+      });
+    }
+  });
 
-  const installBtn = document.getElementById('install-pwa');
-  if (installBtn) installBtn.addEventListener('click', installPWA);
+  closeButton.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
 });
