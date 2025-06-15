@@ -48,6 +48,11 @@
     "show_payment_icons": "Show payment icons",
     "text_style": "Text style",
     "text": "Text",
+    "font_choice": "Font choice",
+    "hero_alignment": "Hero alignment",
+    "whatsapp_number": "WhatsApp number",
+    "rtl_layout": "RTL layout",
+    "preset_theme": "Preset theme",
     "theme_variant": "Theme variant"
   },
   "options": {
@@ -72,6 +77,16 @@
       "title": "Title",
       "subtitle": "Subtitle",
       "normal": "Normal text"
+    },
+    "font": {
+      "tajawal": "Tajawal",
+      "cairo": "Cairo",
+      "changa": "Changa"
+    },
+    "preset_theme": {
+      "souq_classic": "Souq Classic",
+      "modern_mena": "Modern MENA",
+      "luxury_arabia": "Luxury Arabia"
     },
     "theme_variant": {
       "light": "Light",

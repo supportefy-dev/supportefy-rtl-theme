@@ -19,6 +19,17 @@
         "id": "type_primary_font",
         "default": "work_sans_n4",
         "label": "t:general.primary"
+      },
+      {
+        "type": "select",
+        "id": "font_choice",
+        "label": "t:labels.font_choice",
+        "options": [
+          { "value": "tajawal", "label": "t:options.font.tajawal" },
+          { "value": "cairo", "label": "t:options.font.cairo" },
+          { "value": "changa", "label": "t:options.font.changa" }
+        ],
+        "default": "tajawal"
       }
     ]
   },
@@ -30,14 +41,8 @@
         "id": "max_page_width",
         "label": "t:labels.page_width",
         "options": [
-          {
-            "value": "90rem",
-            "label": "t:options.page_width.narrow"
-          },
-          {
-            "value": "110rem",
-            "label": "t:options.page_width.wide"
-          }
+          { "value": "90rem", "label": "t:options.page_width.narrow" },
+          { "value": "110rem", "label": "t:options.page_width.wide" }
         ],
         "default": "90rem"
       },
@@ -50,8 +55,8 @@
         "unit": "px",
         "label": "t:labels.page_margin",
         "default": 20
-      }
-      ,{
+      },
+      {
         "type": "select",
         "id": "text_direction",
         "label": "Text Direction",
@@ -60,6 +65,16 @@
           { "value": "ltr", "label": "LTR - English" }
         ],
         "default": "rtl"
+      },
+      {
+        "type": "select",
+        "id": "hero_alignment",
+        "label": "t:labels.hero_alignment",
+        "options": [
+          { "value": "center", "label": "t:options.alignment.center" },
+          { "value": "right", "label": "t:options.alignment.right" }
+        ],
+        "default": "center"
       }
     ]
   },
@@ -113,14 +128,8 @@
         "id": "theme_variant",
         "label": "Theme variant",
         "options": [
-          {
-            "value": "light",
-            "label": "Light"
-          },
-          {
-            "value": "dark",
-            "label": "Dark"
-          }
+          { "value": "light", "label": "Light" },
+          { "value": "dark", "label": "Dark" }
         ],
         "default": "light"
       }
@@ -138,6 +147,22 @@
         "type": "image_picker",
         "id": "pwa_icon_512",
         "label": "PWA icon 512x512"
+      }
+    ]
+  },
+  {
+    "name": "Preset Theme",
+    "settings": [
+      {
+        "type": "select",
+        "id": "preset_theme",
+        "label": "t:labels.preset_theme",
+        "options": [
+          { "value": "souq_classic", "label": "t:options.preset_theme.souq_classic" },
+          { "value": "modern_mena", "label": "t:options.preset_theme.modern_mena" },
+          { "value": "luxury_arabia", "label": "t:options.preset_theme.luxury_arabia" }
+        ],
+        "default": "souq_classic"
       }
     ]
   }
