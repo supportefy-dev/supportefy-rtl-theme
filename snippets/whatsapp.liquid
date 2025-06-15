@@ -1,5 +1,5 @@
 {% comment %}
-  Floating WhatsApp button. Configure number and message in-line via Liquid variables.
+  Floating WhatsApp button using theme settings (number + optional message).
 {% endcomment %}
 
 {% liquid
@@ -20,12 +20,13 @@
   {% stylesheet %}
     .whatsapp-button {
       position: fixed;
-      bottom: 4rem;
       right: 1rem;
-      z-index: 999;
+      bottom: 1rem;
+      z-index: 1000;
     }
+
     .whatsapp-button a {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
       width: 3rem;
@@ -34,6 +35,12 @@
       background-color: #25D366;
       color: #fff;
       text-decoration: none;
+    }
+
+    .whatsapp-button svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      fill: currentColor;
     }
   {% endstylesheet %}
 {% endif %}
