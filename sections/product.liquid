@@ -36,7 +36,12 @@
 
     <input type="text" name="quantity" min="1" value="1">
 
-    <input type="submit" value="Add to cart">
+    <div class="product-form-actions">
+      <input type="submit" value="Add to cart" class="atc-button">
+    </div>
+    <div class="product-form-actions--sticky">
+      <input type="submit" value="Add to cart" class="atc-button">
+    </div>
     {{ form | payment_button }}
   {% endform %}
 </div>
@@ -53,7 +58,31 @@
   </a>
 {% endif %}
 
+<!-- Mobile Sticky ATC Styles + WhatsApp CTA Styles -->
 {% stylesheet %}
+  .product-form-actions--sticky {
+    display: none;
+  }
+
+  @media (max-width: 749px) {
+    .product-form-actions {
+      display: none;
+    }
+    .product-form-actions--sticky {
+      display: block;
+      position: fixed;
+      bottom: 3.5rem;
+      left: 0;
+      width: 100%;
+      background: var(--color-background);
+      padding: 0.5rem;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .product-form-actions--sticky .atc-button {
+      width: 100%;
+    }
+  }
+
   .whatsapp-cta {
     display: inline-block;
     margin-top: 1rem;

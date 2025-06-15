@@ -117,3 +117,27 @@ body {
 .shopify-section > .full-width {
   grid-column: 1 / -1;
 }
+
+[dir="rtl"] .rotate-icon {
+  transform: rotate(180deg);
+}
+
+.bottom-localization {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-block: 0.5rem;
+  background: var(--color-background);
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  border-top: 1px solid var(--color-foreground);
+  margin-inline-start: 0; /* replace margin-left */
+  margin-inline-end: 0; /* replace margin-right */
+  z-index: 998;
+}
+
+.bottom-localization select {
+  padding: 0.25rem;
+}
