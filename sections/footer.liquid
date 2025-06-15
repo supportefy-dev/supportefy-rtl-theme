@@ -1,7 +1,6 @@
-<footer>
+<footer style="padding-top: {{ section.settings.top_padding }}px; padding-bottom: {{ section.settings.bottom_padding }}px;">
   <div class="footer__copyright">
-    &copy;
-    {{ 'now' | date: '%Y' }}
+    &copy; {{ 'now' | date: '%Y' }}
     {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
   </div>
 
@@ -22,13 +21,102 @@
   <div class="footer__locale">
     {% render 'locale-switcher' %}
   </div>
+
+  <div class="footer__trust">
+    <div class="trust-item">
+      <img src="{{ 'icon-shipping.svg' | asset_url }}" alt="Free shipping">
+      <span>Free shipping</span>
+    </div>
+    <div class="trust-item">
+      <img src="{{ 'icon-cod.svg' | asset_url }}" alt="Cash on delivery">
+      <span>COD available</span>
+    </div>
+    <div class="trust-item">
+      <img src="{{ 'icon-returns.svg' | asset_url }}" alt="Easy returns">
+      <span>Easy returns</span>
+    </div>
+  </div>
 </footer>
 
 {% stylesheet %}
   footer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 2rem;
+    gap: 1rem;
+  }
+
+  footer a {
+    text-decoration: none;
+    color: var(--color-foreground);
+  }
+
+  .footer__links,
+  .footer__payment,
+  .footer__locale,
+  .footer__trust {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .footer__trust {
+    margin-top: 1rem;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .trust-item img {
+    width: 20px;
+    height: auto;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.footer",
+  "settings": [
+    {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:labels.menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "t:labels.show_payment_icons",
+      "default": true
+    }
+  ]
+}
+{% endschema %}
+
   }
   footer a {
     text-decoration: none;
@@ -40,12 +128,42 @@
     display: flex;
     gap: 1rem;
   }
+  footer .footer__trust {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  footer .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
 {% endstylesheet %}
 
 {% schema %}
 {
   "name": "t:general.footer",
   "settings": [
+    {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
     {
       "type": "link_list",
       "id": "menu",

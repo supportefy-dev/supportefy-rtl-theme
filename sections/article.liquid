@@ -5,9 +5,10 @@
 
   https://shopify.dev/docs/storefronts/themes/architecture/templates/article
 {% endcomment %}
+<div style="padding-top: {{ section.settings.top_padding }}px; padding-bottom: {{ section.settings.bottom_padding }}px;">
 
 {% if article.image %}
-  {{ article.image | image_url: width: 1000 | image_tag }}
+  {{ article.image | image_url: width: 1000 | image_tag: alt: article.title, loading: 'lazy' }}
 {% endif %}
 
 <h1>{{ article.title }}</h1>
@@ -60,9 +61,31 @@
   {% endform %}
 {% endif %}
 
+</div>
 {% schema %}
 {
   "name": "t:general.article",
-  "settings": []
+  "settings": [
+    {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ]
 }
 {% endschema %}

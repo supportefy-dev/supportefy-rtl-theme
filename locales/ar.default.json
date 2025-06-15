@@ -11,7 +11,7 @@
     "comment_form_email": "البريد الإلكتروني",
     "comment_form_name": "الاسم",
     "comment_form_submit": "إرسال",
-    "comment_form_title": "أضف تعليق"
+    "comment_form_title": "أضف تعليقًا"
   },
   "cart": {
     "checkout": "الدفع",
@@ -31,11 +31,11 @@
     "title": "المجموعات"
   },
   "gift_card": {
-    "add_to_apple_wallet": "أضف إلى محفظة آبل",
+    "add_to_apple_wallet": "أضف إلى محفظة Apple",
     "card": "بطاقة هدايا",
     "expired": "انتهت صلاحية بطاقة الهدايا هذه",
     "expires_on": "تنتهي في {{ expires_on }}",
-    "use_at_checkout": "استخدم هذه البطاقة في الدفع"
+    "use_at_checkout": "استخدم هذه البطاقة عند الدفع"
   },
   "password": {
     "title": "هذا المتجر خاص",
@@ -47,6 +47,6 @@
     "placeholder": "ابحث في المقالات أو الصفحات أو المنتجات",
     "submit": "بحث",
     "no_results_html": "لم يتم العثور على نتائج لـ {{ terms }}",
-    "results_for_html": "{{ count }} نتيجة لـ {{ terms }}"
+    "results_for_html": "تم العثور على {{ count }} نتيجة لـ {{ terms }}"
   }
 }

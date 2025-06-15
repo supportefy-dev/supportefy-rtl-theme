@@ -1,6 +1,7 @@
 {% comment %}
   Welcome to Shopify theme development!
 {% endcomment %}
+<div style="padding-top: {{ section.settings.top_padding }}px; padding-bottom: {{ section.settings.bottom_padding }}px;">
 
 <div class="welcome full-width">
   <div class="welcome-content">
@@ -18,7 +19,7 @@
       </p>
     </div>
     <div class="icon">
-      <img src="{{ 'shoppy-x-ray.svg' | asset_url }}" width="300" height="300">
+      <img src="{{ 'shoppy-x-ray.svg' | asset_url }}" width="300" height="300" loading="lazy">
     </div>
   </div>
 </div>
@@ -130,10 +131,32 @@
   }
 {% endstylesheet %}
 
+</div>
 {% schema %}
 {
   "name": "Hello World",
-  "settings": [],
+  "settings": [
+    {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
   "presets": [
     {
       "name": "Hello World Template",

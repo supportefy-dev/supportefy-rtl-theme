@@ -5,46 +5,139 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/product
 {% endcomment %}
 
-<div class="product-images">
-  {% for image in product.images %}
-    {% render 'image', class: 'product-image', image: image %}
-  {% endfor %}
+<div style="padding-top: {{ section.settings.top_padding }}px; padding-bottom: {{ section.settings.bottom_padding }}px;">
+
+  <div class="product-images">
+    {% for image in product.images %}
+      {% render 'image', class: 'product-image', image: image %}
+    {% endfor %}
+  </div>
+
+  <div class="product-info">
+    <h1>{{ product.title }}</h1>
+    <p>{{ product.price | money }}</p>
+    <p>{{ product.description }}</p>
+  </div>
+
+  <div class="product-form">
+    {% form 'product', product %}
+      {% assign current_variant = product.selected_or_first_available_variant %}
+
+      <select name="id">
+        {% for variant in product.variants %}
+          <option
+            value="{{ variant.id }}"
+            {% if variant == current_variant %}
+              selected="selected"
+            {% endif %}
+          >
+            {{ variant.title }} - {{ variant.price | money }}
+          </option>
+        {% endfor %}
+      </select>
+
+      <input type="text" name="quantity" min="1" value="1">
+
+      <div class="product-form-actions">
+        <input type="submit" value="Add to cart" class="atc-button">
+      </div>
+      <div class="product-form-actions--sticky">
+        <input type="submit" value="Add to cart" class="atc-button">
+      </div>
+      {{ form | payment_button }}
+    {% endform %}
+  </div>
+
+  <!-- Trust-enhancing WhatsApp CTA -->
+  {% if shop.phone %}
+    <a
+      class="whatsapp-cta"
+      href="https://wa.me/{{ shop.phone | remove: ' ' }}"
+      target="_blank"
+      rel="noopener"
+    >
+      Chat with us on WhatsApp
+    </a>
+  {% endif %}
+
 </div>
 
-<div class="product-info">
-  <h1>{{ product.title }}</h1>
-  <p>{{ product.price | money }}</p>
-  <p>{{ product.description }}</p>
-</div>
+<!-- Mobile Sticky ATC Styles + WhatsApp CTA Styles -->
+{% stylesheet %}
+  .product-form-actions--sticky {
+    display: none;
+  }
 
-<div class="product-form">
-  {% form 'product', product %}
-    {% assign current_variant = product.selected_or_first_available_variant %}
+  @media (max-width: 749px) {
+    .product-form-actions {
+      display: none;
+    }
+    .product-form-actions--sticky {
+      display: block;
+      position: fixed;
+      bottom: 3.5rem;
+      left: 0;
+      width: 100%;
+      background: var(--color-background);
+      padding: 0.5rem;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .product-form-actions--sticky .atc-button {
+      width: 100%;
+    }
+  }
 
-    <select name="id">
-      {% for variant in product.variants %}
-        <option
-          value="{{ variant.id }}"
-          {% if variant == current_variant %}
-            selected="selected"
-          {% endif %}
-        >
-          {{ variant.title }} - {{ variant.price | money }}
-        </option>
-      {% endfor %}
-    </select>
+  .whatsapp-cta {
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: var(--color-foreground);
+  }
+{% endstylesheet %}
 
-    <input type="text" name="quantity" min="1" value="1">
-
-    <input type="submit" value="Add to cart">
-    {{ form | payment_button }}
-  {% endform %}
-</div>
+<!-- SEO-enhancing Structured Data -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "{{ product.title | escape }}",
+    "description": "{{ product.description | strip_html | escape }}",
+    "image": [{% for image in product.images %}"{{ image | image_url }}"{% unless forloop.last %}, {% endunless %}{% endfor %}],
+    "sku": "{{ product.selected_or_first_available_variant.sku }}",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "{{ cart.currency.iso_code }}",
+      "price": "{{ product.price | money_without_currency }}",
+      "availability": "{% if product.available %}http://schema.org/InStock{% else %}http://schema.org/OutOfStock{% endif %}"
+    }
+  }
+</script>
 
 {% schema %}
 {
   "name": "t:general.product",
-  "settings": [],
+  "settings": [
+    {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
   "disabled_on": {
     "groups": ["header", "footer"]
   }
