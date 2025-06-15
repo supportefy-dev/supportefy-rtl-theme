@@ -1,0 +1,24 @@
+{
+  "name": "{{ shop.name }}",
+  "short_name": "{{ shop.name }}",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {% if settings.pwa_icon_192 %}
+    {
+      "src": "{{ settings.pwa_icon_192 | image_url: width: 192 }}",
+      "sizes": "192x192",
+      "type": "image/png"
+    }{% if settings.pwa_icon_512 %},{% endif %}
+    {% endif %}
+    {% if settings.pwa_icon_512 %}
+    {
+      "src": "{{ settings.pwa_icon_512 | image_url: width: 512 }}",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+    {% endif %}
+  ]
+}
