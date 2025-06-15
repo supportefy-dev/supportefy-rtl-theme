@@ -1,0 +1,53 @@
+{
+  "404": {
+    "title": "404",
+    "not_found": "الصفحة غير موجودة.",
+    "back_to_shopping": "العودة إلى التسوق"
+  },
+  "blog": {
+    "article_comments": "التعليقات",
+    "article_metadata_html": "{{ date }} بواسطة {{ author }}",
+    "comment_form_body": "تعليق",
+    "comment_form_email": "البريد الإلكتروني",
+    "comment_form_name": "الاسم",
+    "comment_form_submit": "إرسال",
+    "comment_form_title": "أضف تعليقًا"
+  },
+  "cart": {
+    "checkout": "الدفع",
+    "title": "عربة التسوق",
+    "update": "تحديث",
+    "remove": "إزالة"
+  },
+  "customers": {
+    "login": {
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "submit": "تسجيل الدخول",
+      "title": "تسجيل الدخول"
+    }
+  },
+  "collections": {
+    "title": "المجموعات"
+  },
+  "gift_card": {
+    "add_to_apple_wallet": "أضف إلى محفظة Apple",
+    "card": "بطاقة هدية",
+    "expired": "انتهت صلاحية بطاقة الهدايا هذه",
+    "expires_on": "تنتهي في {{ expires_on }}",
+    "use_at_checkout": "استخدم هذه البطاقة عند الدفع"
+  },
+  "password": {
+    "title": "هذا المتجر خاص",
+    "password": "كلمة المرور",
+    "enter": "أدخل"
+  },
+  "search": {
+    "title": "بحث",
+    "placeholder": "ابحث في المقالات أو الصفحات أو المنتجات",
+    "submit": "بحث",
+    "no_results_html": "لم يتم العثور على نتائج لـ {{ terms }}",
+    "results_for_html": "تم العثور على {{ count }} نتيجة لـ {{ terms }}"
+  }
+}
+

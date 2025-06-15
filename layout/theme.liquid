@@ -1,19 +1,27 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}">
+<html lang="{{ request.locale.iso_code }}" dir="rtl" class="theme-variant-{{ settings.theme_variant }}">
   <head>
-    {% # Inlined CSS Variables %}
     {% render 'css-variables' %}
 
-    {% # Load and preload the critical CSS %}
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
 
+    <!-- Preload Fonts for SEO/Performance -->
     <link rel="preload" href="https://fonts.gstatic.com/s/notosansarabic/v28/bMrm7ri0WZsUyYDfk4rfPJO3LUTMZKc.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://fonts.gstatic.com/s/notonaskharabic/v14/QldKNThW5Xtbjqeq9bgXfFqnX9fXpxWdVpo.woff2" as="font" type="font/woff2" crossorigin>
 
-    {% # Social, title, etc. %}
     {% render 'meta-tags' %}
 
     {{ content_for_header }}
+
+    <!-- PWA Meta & Manifest -->
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="{{ 'manifest.json.liquid' | asset_url }}">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+
+    {{ 'pwa-styles.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'register-sw.js' | asset_url }}" defer></script>
   </head>
 
   <body>
@@ -22,5 +30,8 @@
     {{ content_for_layout }}
 
     {% sections 'footer-group' %}
-  </body>
-</html>
+
+    <!-- WhatsApp Integration -->
+    {% render 'whatsapp' %}
+
+    <!-- Add to Home S
