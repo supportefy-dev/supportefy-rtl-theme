@@ -1,0 +1,44 @@
+<div class="feature-icons" dir="rtl">
+  {% for block in section.blocks %}
+    <div class="feature-icons__item" {{ block.shopify_attributes }}>
+      {% if block.settings.icon %}
+        {{ block.settings.icon | image_url: width: 64 | image_tag }}
+      {% endif %}
+      <p>{{ block.settings.text }}</p>
+    </div>
+  {% endfor %}
+</div>
+
+{% stylesheet %}
+  .feature-icons {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  .feature-icons__item img {
+    width: 64px;
+    height: auto;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Feature Icons",
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Trust signal" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    { "name": "Feature Icons", "blocks": [ { "type": "icon" }, { "type": "icon" }, { "type": "icon" } ] }
+  ]
+}
+{% endschema %}
