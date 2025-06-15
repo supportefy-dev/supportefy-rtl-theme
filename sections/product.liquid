@@ -41,6 +41,28 @@
   {% endform %}
 </div>
 
+<!-- Trust-enhancing WhatsApp CTA -->
+{% if shop.phone %}
+  <a
+    class="whatsapp-cta"
+    href="https://wa.me/{{ shop.phone | remove: ' ' }}"
+    target="_blank"
+    rel="noopener"
+  >
+    Chat with us on WhatsApp
+  </a>
+{% endif %}
+
+{% stylesheet %}
+  .whatsapp-cta {
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: var(--color-foreground);
+  }
+{% endstylesheet %}
+
+<!-- SEO-enhancing Structured Data -->
 <script type="application/ld+json">
   {
     "@context": "https://schema.org/",
