@@ -1,180 +1,26 @@
-<footer style="padding-top: {{ section.settings.top_padding }}px; padding-bottom: {{ section.settings.bottom_padding }}px;">
-  <div class="footer__copyright">
-    &copy; {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
-  </div>
-
-  <div class="footer__links">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
-
-  <div class="footer__payment">
-    {% if section.settings.show_payment_icons %}
-      {% for type in shop.enabled_payment_types %}
-        {{ type | payment_type_svg_tag }}
-      {% endfor %}
+<div class="footer__trust">
+  <div class="trust-item">
+    {% if section.settings.shipping_icon %}
+      {{ section.settings.shipping_icon | image_url: width: 20 | image_tag: alt: section.settings.shipping_text }}
+    {% else %}
+      <img src="{{ 'icon-shipping.svg' | asset_url }}" alt="{{ section.settings.shipping_text }}" width="48" height="48">
     {% endif %}
+    <span>{{ section.settings.shipping_text }}</span>
   </div>
-
-  <div class="footer__locale">
-    {% render 'locale-switcher' %}
+  <div class="trust-item">
+    {% if section.settings.cod_icon %}
+      {{ section.settings.cod_icon | image_url: width: 20 | image_tag: alt: section.settings.cod_text }}
+    {% else %}
+      <img src="{{ 'icon-cod.svg' | asset_url }}" alt="{{ section.settings.cod_text }}" width="48" height="48">
+    {% endif %}
+    <span>{{ section.settings.cod_text }}</span>
   </div>
-
-  <div class="footer__trust">
-    <div class="trust-item">
-      <img src="{{ 'icon-shipping.svg' | asset_url }}" alt="Free shipping" width="48" height="48">
-      <span>Free shipping</span>
-    </div>
-    <div class="trust-item">
-      <img src="{{ 'icon-cod.svg' | asset_url }}" alt="Cash on delivery" width="48" height="48">
-      <span>COD available</span>
-    </div>
-    <div class="trust-item">
-      <img src="{{ 'icon-returns.svg' | asset_url }}" alt="Easy returns" width="48" height="48">
-      <span>Easy returns</span>
-    </div>
+  <div class="trust-item">
+    {% if section.settings.returns_icon %}
+      {{ section.settings.returns_icon | image_url: width: 20 | image_tag: alt: section.settings.returns_text }}
+    {% else %}
+      <img src="{{ 'icon-returns.svg' | asset_url }}" alt="{{ section.settings.returns_text }}" width="48" height="48">
+    {% endif %}
+    <span>{{ section.settings.returns_text }}</span>
   </div>
-</footer>
-
-{% stylesheet %}
-  footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 2rem;
-    gap: 1rem;
-  }
-
-  footer a {
-    text-decoration: none;
-    color: var(--color-foreground);
-  }
-
-  .footer__links,
-  .footer__payment,
-  .footer__locale,
-  .footer__trust {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .footer__trust {
-    margin-top: 1rem;
-  }
-
-  .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
-
-  .trust-item img {
-    width: 20px;
-    height: auto;
-  }
-{% endstylesheet %}
-
-{% schema %}
-{
-  "name": "t:general.footer",
-  "settings": [
-    {
-      "type": "range",
-      "id": "top_padding",
-      "label": "Top padding",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "bottom_padding",
-      "label": "Bottom padding",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "t:labels.show_payment_icons",
-      "default": true
-    }
-  ]
-}
-{% endschema %}
-
-  }
-  footer a {
-    text-decoration: none;
-    color: var(--color-foreground);
-  }
-  footer .footer__links,
-  footer .footer__payment,
-  footer .footer__locale {
-    display: flex;
-    gap: 1rem;
-  }
-  footer .footer__trust {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  footer .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
-{% endstylesheet %}
-
-{% schema %}
-{
-  "name": "t:general.footer",
-  "settings": [
-    {
-      "type": "range",
-      "id": "top_padding",
-      "label": "Top padding",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "bottom_padding",
-      "label": "Bottom padding",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "t:labels.show_payment_icons",
-      "default": true
-    }
-  ]
-}
-{% endschema %}
+</div>
