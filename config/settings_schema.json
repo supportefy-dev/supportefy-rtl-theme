@@ -79,5 +79,20 @@
         "default": 4
       }
     ]
+  },
+  {
+    "name": "PWA",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "pwa_icon_192",
+        "label": "PWA icon 192x192"
+      },
+      {
+        "type": "image_picker",
+        "id": "pwa_icon_512",
+        "label": "PWA icon 512x512"
+      }
+    ]
   }
 ]
