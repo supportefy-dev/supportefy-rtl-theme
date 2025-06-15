@@ -19,5 +19,26 @@
     {{ content_for_layout }}
 
     {% sections 'footer-group' %}
+
+    {% render 'whatsapp' %}
+
+    <div class="bottom-localization rotate-icon">
+      {% form 'localization' %}
+        <select name="currency_code" onchange="this.form.submit()">
+          {% for currency in localization.available_currencies %}
+            <option value="{{ currency.iso_code }}" {% if currency.iso_code == localization.currency.iso_code %}selected{% endif %}>
+              {{ currency.iso_code }} {{ currency.symbol }}
+            </option>
+          {% endfor %}
+        </select>
+        <select name="locale_code" onchange="this.form.submit()">
+          {% for locale in localization.available_languages %}
+            <option value="{{ locale.iso_code }}" {% if locale.iso_code == localization.locale.iso_code %}selected{% endif %}>
+              {{ locale.endonym_name }}
+            </option>
+          {% endfor %}
+        </select>
+      {% endform %}
+    </div>
   </body>
 </html>

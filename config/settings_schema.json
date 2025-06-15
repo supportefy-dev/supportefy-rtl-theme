@@ -79,5 +79,20 @@
         "default": 4
       }
     ]
+  },
+  {
+    "name": "WhatsApp",
+    "settings": [
+      {
+        "type": "text",
+        "id": "whatsapp_number",
+        "label": "WhatsApp number"
+      },
+      {
+        "type": "text",
+        "id": "whatsapp_message",
+        "label": "WhatsApp default message"
+      }
+    ]
   }
 ]
