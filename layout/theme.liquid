@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}" dir="rtl" class="theme-variant-{{ settings.theme_variant }}">
+<html lang="{{ request.locale.iso_code }}" dir="{{ settings.text_direction }}" class="theme-variant-{{ settings.theme_variant }}">
   <head>
     {% render 'css-variables' %}
 
@@ -10,7 +10,6 @@
     <link rel="preload" href="https://fonts.gstatic.com/s/notonaskharabic/v14/QldKNThW5Xtbjqeq9bgXfFqnX9fXpxWdVpo.woff2" as="font" type="font/woff2" crossorigin>
 
     {% render 'meta-tags' %}
-
     {{ content_for_header }}
 
     <!-- PWA Meta & Manifest -->
@@ -24,12 +23,15 @@
     <script src="{{ 'register-sw.js' | asset_url }}" defer></script>
   </head>
 
-  <body dir="{{ settings.text_direction }}">
+  <body>
     {% sections 'header-group' %}
 
     {{ content_for_layout }}
 
     {% sections 'footer-group' %}
+
+    <!-- Pro License Logic (Supportefy) -->
+    {{ 'pro-license.js' | asset_url | script_tag }}
 
     <!-- WhatsApp Integration -->
     {% render 'whatsapp' %}

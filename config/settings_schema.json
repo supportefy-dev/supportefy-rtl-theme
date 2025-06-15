@@ -126,7 +126,7 @@
       {
         "type": "radio",
         "id": "theme_variant",
-        "label": "Theme variant",
+        "label": "t:labels.theme_variant",
         "options": [
           { "value": "light", "label": "Light" },
           { "value": "dark", "label": "Dark" }
@@ -163,6 +163,16 @@
           { "value": "luxury_arabia", "label": "t:options.preset_theme.luxury_arabia" }
         ],
         "default": "souq_classic"
+      }
+    ]
+  },
+  {
+    "name": "Supportefy Pro",
+    "settings": [
+      {
+        "type": "text",
+        "id": "pro_license",
+        "label": "Supportefy License Key"
       }
     ]
   }
