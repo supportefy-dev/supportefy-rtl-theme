@@ -1,0 +1,64 @@
+<div class="app-header-mode full-width">
+  <div class="app-header__inner">
+    <button class="app-header__back" onclick="history.back()">&#8592;</button>
+    <h1 class="app-header__title">{{ section.settings.title }}</h1>
+    <div class="app-header__actions">
+      {% if section.settings.show_cart %}
+        <a href="{{ routes.cart_url }}">{{ 'icon-cart.svg' | inline_asset_content }}</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .app-header-mode {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e1e3e5;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .app-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+  }
+  .app-header__back {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+  }
+  .app-header__title {
+    margin: 0;
+    font-size: 1rem;
+  }
+  .app-header__actions svg {
+    width: 1.5rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "App Header Mode",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "App Header"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart",
+      "label": "Show cart icon",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "App Header Mode"
+    }
+  ]
+}
+{% endschema %}

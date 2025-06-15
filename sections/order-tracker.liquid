@@ -1,0 +1,54 @@
+<div class="order-tracker">
+  <form id="order-tracker-form-{{ section.id }}" class="order-tracker__form">
+    <label for="order-input-{{ section.id }}">Enter order number</label>
+    <input type="text" id="order-input-{{ section.id }}" required>
+    <button type="submit">Track</button>
+  </form>
+  <div class="order-status" id="order-status-{{ section.id }}"></div>
+</div>
+
+{% javascript %}
+  (function() {
+    var form = document.getElementById('order-tracker-form-{{ section.id }}');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var orderId = document.getElementById('order-input-{{ section.id }}').value;
+      var statusEl = document.getElementById('order-status-{{ section.id }}');
+      statusEl.textContent = 'Loading...';
+      fetch('/apps/track?order=' + encodeURIComponent(orderId))
+        .then(function(r){return r.json();})
+        .then(function(data){statusEl.textContent = data.status || 'Status unavailable';})
+        .catch(function(){statusEl.textContent = 'Unable to fetch order status.';});
+    });
+  })();
+{% endjavascript %}
+
+{% stylesheet %}
+  .order-tracker {
+    padding: 1rem;
+    background-color: #f6f6f7;
+    text-align: center;
+  }
+  .order-tracker__form {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+  .order-status {
+    font-weight: bold;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Order Tracker",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Order Tracker"
+    }
+  ]
+}
+{% endschema %}

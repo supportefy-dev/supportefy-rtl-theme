@@ -1,0 +1,73 @@
+<div class="prayer-time-bar full-width">
+  <div class="prayer-times" id="prayer-times-{{ section.id }}">
+    <span>Fajr: <strong id="fajr-{{ section.id }}">--:--</strong></span>
+    <span>Dhuhr: <strong id="dhuhr-{{ section.id }}">--:--</strong></span>
+    <span>Asr: <strong id="asr-{{ section.id }}">--:--</strong></span>
+    <span>Maghrib: <strong id="maghrib-{{ section.id }}">--:--</strong></span>
+    <span>Isha: <strong id="isha-{{ section.id }}">--:--</strong></span>
+  </div>
+</div>
+
+{% javascript %}
+  (function() {
+    var container = document.getElementById('prayer-times-{{ section.id }}');
+    if (!container) return;
+    var location = "{{ section.settings.location | escape }}";
+    if (!location) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          fetch("https://api.aladhan.com/v1/timings/" + Math.floor(Date.now()/1000) + "?latitude=" + pos.coords.latitude + "&longitude=" + pos.coords.longitude)
+            .then(function(r){return r.json();})
+            .then(updateTimes)
+            .catch(function(){ /* ignore */});
+        });
+      }
+      return;
+    }
+    fetch("https://api.aladhan.com/v1/timingsByAddress?address=" + encodeURIComponent(location))
+      .then(function(r){return r.json();})
+      .then(updateTimes)
+      .catch(function(){ /* ignore */});
+
+    function updateTimes(data) {
+      if (!data || !data.data || !data.data.timings) return;
+      var t = data.data.timings;
+      document.getElementById('fajr-{{ section.id }}').textContent = t.Fajr;
+      document.getElementById('dhuhr-{{ section.id }}').textContent = t.Dhuhr;
+      document.getElementById('asr-{{ section.id }}').textContent = t.Asr;
+      document.getElementById('maghrib-{{ section.id }}').textContent = t.Maghrib;
+      document.getElementById('isha-{{ section.id }}').textContent = t.Isha;
+    }
+  })();
+{% endjavascript %}
+
+{% stylesheet %}
+  .prayer-time-bar {
+    background-color: #f3f4f6;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+  }
+  .prayer-time-bar span {
+    margin: 0 0.5rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Prayer Time Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "location",
+      "label": "Location (leave blank for auto-detect)",
+      "default": ""
+    }
+  ],
+  "presets": [
+    {
+      "name": "Prayer Time Bar"
+    }
+  ]
+}
+{% endschema %}
