@@ -1,6 +1,6 @@
 {
   "404": {
-    "title": "404",
+    "title": "٤٠٤",
     "not_found": "الصفحة غير موجودة.",
     "back_to_shopping": "العودة إلى التسوق"
   },
@@ -32,7 +32,7 @@
   },
   "gift_card": {
     "add_to_apple_wallet": "أضف إلى محفظة Apple",
-    "card": "بطاقة هدية",
+    "card": "بطاقة هدايا",
     "expired": "انتهت صلاحية بطاقة الهدايا هذه",
     "expires_on": "تنتهي في {{ expires_on }}",
     "use_at_checkout": "استخدم هذه البطاقة عند الدفع"
@@ -40,7 +40,7 @@
   "password": {
     "title": "هذا المتجر خاص",
     "password": "كلمة المرور",
-    "enter": "أدخل"
+    "enter": "دخول"
   },
   "search": {
     "title": "بحث",
@@ -50,4 +50,3 @@
     "results_for_html": "تم العثور على {{ count }} نتيجة لـ {{ terms }}"
   }
 }
-

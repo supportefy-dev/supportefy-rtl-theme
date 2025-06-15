@@ -1,7 +1,6 @@
 <footer style="padding-top: {{ section.settings.top_padding }}px; padding-bottom: {{ section.settings.bottom_padding }}px;">
   <div class="footer__copyright">
-    &copy;
-    {{ 'now' | date: '%Y' }}
+    &copy; {{ 'now' | date: '%Y' }}
     {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
   </div>
 
@@ -17,6 +16,10 @@
         {{ type | payment_type_svg_tag }}
       {% endfor %}
     {% endif %}
+  </div>
+
+  <div class="footer__locale">
+    {% render 'locale-switcher' %}
   </div>
 
   <div class="footer__trust">
@@ -38,15 +41,90 @@
 {% stylesheet %}
   footer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 2rem;
+    gap: 1rem;
+  }
+
+  footer a {
+    text-decoration: none;
+    color: var(--color-foreground);
+  }
+
+  .footer__links,
+  .footer__payment,
+  .footer__locale,
+  .footer__trust {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .footer__trust {
+    margin-top: 1rem;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .trust-item img {
+    width: 20px;
+    height: auto;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:general.footer",
+  "settings": [
+    {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:labels.menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "t:labels.show_payment_icons",
+      "default": true
+    }
+  ]
+}
+{% endschema %}
+
   }
   footer a {
     text-decoration: none;
     color: var(--color-foreground);
   }
   footer .footer__links,
-  footer .footer__payment {
+  footer .footer__payment,
+  footer .footer__locale {
     display: flex;
     gap: 1rem;
   }
