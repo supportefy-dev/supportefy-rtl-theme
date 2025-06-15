@@ -1,4 +1,4 @@
-<footer>
+<footer style="padding-top: {{ section.settings.top_padding }}px; padding-bottom: {{ section.settings.bottom_padding }}px;">
   <div class="footer__copyright">
     &copy;
     {{ 'now' | date: '%Y' }}
@@ -18,6 +18,21 @@
       {% endfor %}
     {% endif %}
   </div>
+
+  <div class="footer__trust">
+    <div class="trust-item">
+      <img src="{{ 'icon-shipping.svg' | asset_url }}" alt="Free shipping">
+      <span>Free shipping</span>
+    </div>
+    <div class="trust-item">
+      <img src="{{ 'icon-cod.svg' | asset_url }}" alt="Cash on delivery">
+      <span>COD available</span>
+    </div>
+    <div class="trust-item">
+      <img src="{{ 'icon-returns.svg' | asset_url }}" alt="Easy returns">
+      <span>Easy returns</span>
+    </div>
+  </div>
 </footer>
 
 {% stylesheet %}
@@ -35,12 +50,42 @@
     display: flex;
     gap: 1rem;
   }
+  footer .footer__trust {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  footer .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
 {% endstylesheet %}
 
 {% schema %}
 {
   "name": "t:general.footer",
   "settings": [
+    {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
     {
       "type": "link_list",
       "id": "menu",

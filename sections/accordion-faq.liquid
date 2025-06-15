@@ -1,0 +1,40 @@
+<div class="accordion-faq" dir="rtl">
+  {% for block in section.blocks %}
+    <details {{ block.shopify_attributes }}>
+      <summary>{{ block.settings.question }}</summary>
+      <p>{{ block.settings.answer }}</p>
+    </details>
+  {% endfor %}
+</div>
+
+{% stylesheet %}
+  .accordion-faq details {
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+  .accordion-faq summary {
+    cursor: pointer;
+    font-weight: bold;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Accordion FAQ",
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "textarea", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Accordion FAQ", "blocks": [ { "type": "faq" }, { "type": "faq" } ] }
+  ]
+}
+{% endschema %}
