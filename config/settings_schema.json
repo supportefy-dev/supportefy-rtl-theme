@@ -79,5 +79,53 @@
         "default": 4
       }
     ]
+  },
+  {
+    "name": "Beginner-Friendly Settings",
+    "settings": [
+      {
+        "type": "select",
+        "id": "font_choice",
+        "label": "t:labels.font_choice",
+        "options": [
+          { "value": "tajawal", "label": "t:options.font.tajawal" },
+          { "value": "cairo", "label": "t:options.font.cairo" },
+          { "value": "changa", "label": "t:options.font.changa" }
+        ],
+        "default": "tajawal"
+      },
+      {
+        "type": "select",
+        "id": "hero_alignment",
+        "label": "t:labels.hero_alignment",
+        "options": [
+          { "value": "center", "label": "t:options.alignment.center" },
+          { "value": "right", "label": "t:options.alignment.right" }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "text",
+        "id": "whatsapp_number",
+        "label": "t:labels.whatsapp_number"
+      },
+      {
+        "type": "checkbox",
+        "id": "rtl_layout",
+        "label": "t:labels.rtl_layout",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "preset_theme",
+        "label": "t:labels.preset_theme",
+        "options": [
+          { "value": "souq_classic", "label": "t:options.preset_theme.souq_classic" },
+          { "value": "modern_mena", "label": "t:options.preset_theme.modern_mena" },
+          { "value": "luxury_arabia", "label": "t:options.preset_theme.luxury_arabia" }
+        ],
+        "default": "souq_classic"
+      }
+    ]
   }
 ]
