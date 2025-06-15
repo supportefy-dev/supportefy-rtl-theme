@@ -8,16 +8,26 @@
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
 
     {% # Social, title, etc. %}
-    {% render 'meta-tags' %}
+  {% render 'meta-tags' %}
 
-    {{ content_for_header }}
+  {{ content_for_header }}
+
+  <link rel="manifest" href="{{ 'manifest.json.liquid' | asset_url }}">
+  {{ 'pwa-styles.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'register-sw.js' | asset_url }}" defer></script>
   </head>
 
   <body>
     {% sections 'header-group' %}
 
-    {{ content_for_layout }}
+  {{ content_for_layout }}
 
-    {% sections 'footer-group' %}
+  {% sections 'footer-group' %}
+
+  <div id="add-to-home-popup">
+    <button type="button" class="close">&times;</button>
+    <button type="button" id="install-pwa">Add to Home</button>
+  </div>
+  <script src="{{ 'add-to-home-popup.js' | asset_url }}" defer></script>
   </body>
 </html>
