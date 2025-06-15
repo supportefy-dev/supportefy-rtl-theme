@@ -1,4 +1,6 @@
 /** Critical CSS for the theme. This file is included on every page. */
+@import url('arabic-typography-system.css');
+@import url('theme-variants-css.css');
 
 /* Reset styles inspired by https://www.joshwcomeau.com/css/custom-css-reset/ */
 * {

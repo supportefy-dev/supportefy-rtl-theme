@@ -47,7 +47,8 @@
     "page_width": "Page width",
     "show_payment_icons": "Show payment icons",
     "text_style": "Text style",
-    "text": "Text"
+    "text": "Text",
+    "theme_variant": "Theme variant"
   },
   "options": {
     "alignment": {
@@ -72,5 +73,9 @@
       "subtitle": "Subtitle",
       "normal": "Normal text"
     },
+    "theme_variant": {
+      "light": "Light",
+      "dark": "Dark"
+    }
   }
 }
