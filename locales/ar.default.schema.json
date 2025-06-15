@@ -1,0 +1,20 @@
+{
+  "general": {
+    "404": "صفحة غير موجودة",
+    "article": "مقالة",
+    "blog": "مدونة",
+    "cart": "سلة المشتريات",
+    "collection": "مجموعة",
+    "collections_grid": "شبكة المجموعات",
+    "custom_section": "قسم مخصص",
+    "footer": "تذييل",
+    "group": "مجموعة",
+    "header": "رأس الصفحة",
+    "page": "صفحة",
+    "password": "كلمة المرور",
+    "product": "منتج",
+    "search": "بحث",
+    "text": "نص"
+  }
+}
+
