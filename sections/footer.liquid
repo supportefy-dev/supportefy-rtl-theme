@@ -18,6 +18,10 @@
       {% endfor %}
     {% endif %}
   </div>
+
+  <div class="footer__locale">
+    {% render 'locale-switcher' %}
+  </div>
 </footer>
 
 {% stylesheet %}
@@ -31,7 +35,8 @@
     color: var(--color-foreground);
   }
   footer .footer__links,
-  footer .footer__payment {
+  footer .footer__payment,
+  footer .footer__locale {
     display: flex;
     gap: 1rem;
   }

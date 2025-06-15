@@ -1,0 +1,14 @@
+{% form 'localization', id: 'LocaleSwitcherForm' %}
+  <select name="locale_code" id="LocaleSwitcher" onchange="this.form.submit()">
+    {% for locale in form.available_locales %}
+      <option value="{{ locale.iso_code }}" {% if locale.iso_code == form.current_locale.iso_code %}selected{% endif %}>
+        {{ locale.endonym_name }}
+      </option>
+    {% endfor %}
+  </select>
+{% endform %}
+{% stylesheet %}
+  #LocaleSwitcher {
+    min-width: 8rem;
+  }
+{% endstylesheet %}

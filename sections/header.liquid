@@ -19,8 +19,12 @@
         <sup>{{ cart.item_count }}</sup>
       {% endif %}
 
-      {{ 'icon-cart.svg' | inline_asset_content }}
-    </a>
+    {{ 'icon-cart.svg' | inline_asset_content }}
+  </a>
+  </div>
+
+  <div class="header__locale">
+    {% render 'locale-switcher' %}
   </div>
 </header>
 
@@ -46,7 +50,8 @@
     width: 2rem;
   }
   header .header__menu,
-  header .header__icons {
+  header .header__icons,
+  header .header__locale {
     display: flex;
     gap: 1rem;
   }
